@@ -290,6 +290,10 @@ gulp.task('pub', ['check-git', 'compile'], done => {
   }
 });
 
+gulp.task('publish',done=>{
+  publish(argv['tag'],done);
+});
+
 gulp.task('pub-with-ci', done => {
   if (!process.env.NPM_TOKEN) {
     console.log('no NPM token found, skip');

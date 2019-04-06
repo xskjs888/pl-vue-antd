@@ -1,6 +1,6 @@
 {
   "name": "ant-design-vue",
-  "version": "1.3.8",
+  "version": "1.3.8.0",
   "title": "Ant Design Vue",
   "description": "An enterprise-class UI design language and Vue-based implementation",
   "keywords": [
@@ -29,6 +29,7 @@
     "test": "cross-env NODE_ENV=test jest --config .jest.js",
     "compile": "node antd-tools/cli/run.js compile",
     "pub": "node antd-tools/cli/run.js pub",
+    "publish": "node antd-tools/cli/run.js publish",
     "dist": "node antd-tools/cli/run.js dist",
     "lint": "eslint -c ./.eslintrc --fix --ext .jsx,.js,.vue ./components",
     "lint:style": "stylelint \"{site,components}/**/*.less\" --syntax less",
