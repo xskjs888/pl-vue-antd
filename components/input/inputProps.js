@@ -34,4 +34,8 @@ export default {
   suffix: PropTypes.any,
   spellCheck: Boolean,
   autoFocus: Boolean,
+  lazy: {
+    type: [Boolean, Number],
+    default: false,
+  },
 };

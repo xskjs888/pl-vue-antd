@@ -60,7 +60,16 @@ export default {
         this.$forceUpdate();
       }
       if (!e.target.composing) {
-        this.$emit('change.value', e.target.value);
+        if (false === this.lazy) {
+          this.$emit('change.value', e.target.value);
+        } else {
+          this.stateValue = e.target.value;
+          clearTimeout(this.lazyTimer);
+          let _this = this;
+          this.lazyTimer = setTimeout(() => {
+            _this.$emit('change.value', _this.stateValue);
+          },true === this.lazy ? 350 : this.lazy);
+        }
       }
       this.$emit('change', e);
       this.$emit('input', e);
