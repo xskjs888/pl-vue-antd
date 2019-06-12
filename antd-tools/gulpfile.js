@@ -147,14 +147,10 @@ function tag() {
   execSync(`git config --global user.name ${process.env.GITHUB_USER_NAME}`);
   execSync(`git tag ${version}`);
   execSync(
-    `git push https://${
-      process.env.GITHUB_TOKEN
-    }@github.com/vueComponent/ant-design-vue.git ${version}:${version}`,
+    `git push https://${process.env.GITHUB_TOKEN}@github.com/vueComponent/ant-design-vue.git ${version}:${version}`,
   );
   execSync(
-    `git push https://${
-      process.env.GITHUB_TOKEN
-    }@github.com/vueComponent/ant-design-vue.git master:master`,
+    `git push https://${process.env.GITHUB_TOKEN}@github.com/vueComponent/ant-design-vue.git master:master`,
   );
   console.log('tagged');
 }
@@ -290,8 +286,8 @@ gulp.task('pub', ['check-git', 'compile'], done => {
   }
 });
 
-gulp.task('publish',done=>{
-  publish(argv['tag'],done);
+gulp.task('publish', done => {
+  publish(argv['tag'], done);
 });
 
 gulp.task('pub-with-ci', done => {

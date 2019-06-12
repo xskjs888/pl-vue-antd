@@ -5,7 +5,6 @@ require('colorful').colorful();
 const gulp = require('gulp');
 const program = require('commander');
 
-
 program.on('--help', () => {
   console.log('  Usage:'.to.bold.blue.color);
   console.log();

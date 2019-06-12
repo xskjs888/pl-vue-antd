@@ -987,11 +987,11 @@ export default {
       // ---
       // 当数据量少于等于每页数量时，直接设置数据
       // 否则进行读取分页数据
-      if (data.length > pageSize || pageSize === Number.MAX_VALUE) {
-        data = data.filter((_, i) => {
-          return i >= (current - 1) * pageSize && i < current * pageSize;
-        });
-      }
+      // if (data.length > pageSize || pageSize === Number.MAX_VALUE) {
+      //   data = data.filter((_, i) => {
+      //     return i >= (current - 1) * pageSize && i < current * pageSize;
+      //   });
+      // }
       return data;
     },
 
@@ -1066,6 +1066,7 @@ export default {
     renderTable(contextLocale, loading) {
       const locale = { ...contextLocale, ...this.locale };
       const { prefixCls, showHeader, ...restProps } = getOptionProps(this);
+
       const data = this.getCurrentPageData();
       const expandIconAsCell = this.expandedRowRender && this.expandIconAsCell !== false;
 
@@ -1077,7 +1078,9 @@ export default {
       });
 
       let columns = this.renderRowSelection(locale);
+
       columns = this.renderColumnsDropdown(columns, locale);
+
       columns = columns.map((column, i) => {
         const newColumn = { ...column };
         newColumn.key = this.getColumnKey(newColumn, i);
@@ -1100,6 +1103,7 @@ export default {
           expandIconColumnIndex,
           expandIconAsCell,
           emptyText: !(loading.props && loading.props.spinning) && locale.emptyText,
+          seat: restProps.seat,
         },
         on: this.$listeners,
         class: classString,

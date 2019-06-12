@@ -234,6 +234,11 @@ const TableRow = {
     }
 
     style = { ...style, ...customStyle };
+
+    if (record.translateY) {
+      style.transform = `translateY(${record.translateY}px)`;
+    }
+
     const rowClassName = classNames(
       prefixCls,
       className,
@@ -259,6 +264,7 @@ const TableRow = {
         },
       },
     );
+
     return <BodyRow {...bodyRowProps}>{cells}</BodyRow>;
   },
 };

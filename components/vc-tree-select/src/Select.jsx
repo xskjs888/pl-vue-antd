@@ -964,6 +964,7 @@ const Select = {
         if (!this.isMultiple()) {
           returnValue = returnValue[0];
         }
+
         this.__emit('change', returnValue, labelList, extra);
       }
     },
@@ -996,7 +997,6 @@ const Select = {
     const props = getOptionProps(this);
     const { prefixCls, treeExpandedKeys } = props;
     const isMultiple = this.isMultiple();
-
     const passProps = {
       props: {
         ...props,
@@ -1033,7 +1033,17 @@ const Select = {
     });
 
     const Popup = isMultiple ? MultiplePopup : SinglePopup;
-    const $popup = <Popup {...popupProps} />;
+    const $popupHeader = this.$createElement(
+      'header',
+      this.$scopedSlots.header ? this.$scopedSlots.header(passProps.props) : {},
+    );
+
+    const $popup = (
+      <Popup
+        {...popupProps}
+        class={popupProps.props.treeCheckStrictly == true ? 'check-strictly' : ''}
+      />
+    );
 
     const Selector = isMultiple ? MultipleSelector : SingleSelector;
     const $selector = (
@@ -1051,6 +1061,7 @@ const Select = {
     );
     const selectTriggerProps = mergeProps(passProps, {
       props: {
+        popupHeaderElement: $popupHeader,
         popupElement: $popup,
         dropdownVisibleChange: this.onDropdownVisibleChange,
       },

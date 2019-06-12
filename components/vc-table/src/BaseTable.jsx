@@ -145,7 +145,7 @@ const BaseTable = {
   },
 
   render() {
-    const { sComponents: components, prefixCls, scroll, data, getBodyWrapper } = this.table;
+    const { sComponents: components, prefixCls, scroll, seat, data, getBodyWrapper } = this.table;
     const { expander, tableClassName, hasHead, hasBody, fixed } = this.$props;
 
     const tableStyle = {};
@@ -163,8 +163,16 @@ const BaseTable = {
     const BodyWrapper = components.body.wrapper;
 
     let body;
+    let seatTop = { height: seat.top + 'px' || 0 };
+    let seatBottom = { height: seat.bottom + 'px' || 0 };
     if (hasBody) {
-      body = <BodyWrapper class={`${prefixCls}-tbody`}>{this.renderRows(data, 0)}</BodyWrapper>;
+      body = (
+        <BodyWrapper class={`${prefixCls}-tbody`}>
+          <tr class="seat-top" style={seatTop}></tr>
+          {this.renderRows(data, 0)}
+          <tr class="seat-bottom" style={seatBottom}></tr>
+        </BodyWrapper>
+      );
       if (getBodyWrapper) {
         body = getBodyWrapper(body);
       }

@@ -115,6 +115,7 @@ export default {
     }
     return (
       <div
+        id="table-container"
         key="bodyTable"
         class={`${prefixCls}-body`}
         style={bodyStyle}

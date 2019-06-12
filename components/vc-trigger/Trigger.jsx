@@ -42,6 +42,7 @@ export default {
     getPopupClassNameFromAlign: PropTypes.any.def(returnEmptyString),
     // onPopupVisibleChange: PropTypes.func.def(noop),
     afterPopupVisibleChange: PropTypes.func.def(noop),
+    popupHeader: PropTypes.any,
     popup: PropTypes.any,
     popupStyle: PropTypes.object.def({}),
     prefixCls: PropTypes.string.def('rc-trigger-popup'),
@@ -412,7 +413,12 @@ export default {
           },
         ],
       };
-      return <Popup {...popupProps}>{getComponentFromProp(self, 'popup')}</Popup>;
+      return (
+        <Popup {...popupProps}>
+          {getComponentFromProp(self, 'popupHeader')}
+          {getComponentFromProp(self, 'popup')}
+        </Popup>
+      );
     },
 
     getContainer() {

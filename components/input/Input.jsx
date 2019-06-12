@@ -66,9 +66,12 @@ export default {
           this.stateValue = e.target.value;
           clearTimeout(this.lazyTimer);
           let _this = this;
-          this.lazyTimer = setTimeout(() => {
-            _this.$emit('change.value', _this.stateValue);
-          },true === this.lazy ? 350 : this.lazy);
+          this.lazyTimer = setTimeout(
+            () => {
+              _this.$emit('change.value', _this.stateValue);
+            },
+            true === this.lazy ? 350 : this.lazy,
+          );
         }
       }
       this.$emit('change', e);

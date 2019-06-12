@@ -45,6 +45,7 @@ const SelectTrigger = {
     isMultiple: PropTypes.bool,
     dropdownPrefixCls: PropTypes.string,
     dropdownVisibleChange: PropTypes.func,
+    popupHeaderElement: PropTypes.node,
     popupElement: PropTypes.node,
     open: PropTypes.bool,
   },
@@ -79,6 +80,7 @@ const SelectTrigger = {
       dropdownVisibleChange,
       getPopupContainer,
       dropdownPrefixCls,
+      popupHeaderElement,
       popupElement,
       open,
     } = this.$props;
@@ -91,6 +93,7 @@ const SelectTrigger = {
     if (dropdownMatchSelectWidth !== false) {
       stretch = dropdownMatchSelectWidth ? 'width' : 'minWidth';
     }
+
     return (
       <Trigger
         {...{
@@ -108,6 +111,7 @@ const SelectTrigger = {
         prefixCls={dropdownPrefixCls}
         popupTransitionName={this.getDropdownTransitionName()}
         onPopupVisibleChange={dropdownVisibleChange}
+        popupHeader={popupHeaderElement}
         popup={popupElement}
         popupVisible={open}
         getPopupContainer={getPopupContainer}

@@ -32,6 +32,7 @@ const TreeNode = {
       loading: PropTypes.bool,
       halfChecked: PropTypes.bool,
       title: PropTypes.any,
+      checkchild: PropTypes.any,
       pos: PropTypes.string,
       dragOver: PropTypes.bool,
       dragOverGapTop: PropTypes.bool,
@@ -397,6 +398,8 @@ const TreeNode = {
       } = this;
       const disabled = this.isDisabled();
       const title = getComponentFromProp(this, 'title') || defaultTitle;
+      const checkchild = getComponentFromProp(this, 'checkchild') || '';
+
       const wrapClass = `${prefixCls}-node-content-wrapper`;
 
       // Icon - Still show loading icon when loading without showIcon
@@ -440,6 +443,7 @@ const TreeNode = {
         >
           {$icon}
           {$title}
+          {checkchild}
         </span>
       );
     },
@@ -502,6 +506,7 @@ const TreeNode = {
       vcTree: { prefixCls, filterTreeNode, draggable },
     } = this;
     const disabled = this.isDisabled();
+
     return (
       <li
         class={{

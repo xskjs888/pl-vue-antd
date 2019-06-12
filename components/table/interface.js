@@ -129,6 +129,7 @@ export const TableProps = {
   // className?: PropTypes.string,
   // style?: React.CSSProperties;
   // children?: React.ReactNode;
+  seat: PropTypes.any,
 };
 
 // export interface TableStateFilters {

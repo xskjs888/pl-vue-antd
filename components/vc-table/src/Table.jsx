@@ -38,6 +38,7 @@ export default {
       footer: PropTypes.func,
       emptyText: PropTypes.any,
       scroll: PropTypes.object,
+      seat: PropTypes.any,
       rowRef: PropTypes.func,
       getBodyWrapper: PropTypes.func,
       components: PropTypes.shape({
@@ -366,6 +367,7 @@ export default {
     handleBodyScroll(e) {
       this.handleBodyScrollLeft(e);
       this.handleBodyScrollTop(e);
+      this.$listeners['scroll'] && this.$listeners['scroll'](e);
     },
     handleWheel(event) {
       const { scroll = {} } = this.$props;

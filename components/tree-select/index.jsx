@@ -75,10 +75,16 @@ const TreeSelect = {
         if (!newTitle && scopedSlots.title && $scopedSlots[scopedSlots.title]) {
           newTitle = $scopedSlots.title(list[i]);
         }
+
         const item = {
           // label: newLabel,
           title: newTitle || newLabel,
         };
+
+        if (scopedSlots.checkchild && $scopedSlots[scopedSlots.checkchild]) {
+          item.checkchild = $scopedSlots.checkchild(list[i]);
+        }
+
         this.updateTreeData(children || []);
         Object.assign(list[i], item);
       }
